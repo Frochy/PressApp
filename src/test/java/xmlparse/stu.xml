@@ -1,0 +1,22 @@
+<Students>
+    <student>
+        <name><![CDATA[陈喻]]></name>
+        <age><![CDATA[26]]></age>
+        <sex><![CDATA[男]]></sex>
+    </student>
+    <student>
+        <name><![CDATA[陈彩凤]]></name>
+        <age><![CDATA[25]]></age>
+        <sex><![CDATA[女]]></sex>
+    </student>
+    <student>
+        <name><![CDATA[陈紫宣]]></name>
+        <age><![CDATA[2]]></age>
+        <sex><![CDATA[女]]></sex>
+    </student>
+    <student>
+        <name><![CDATA[陈紫曦]]></name>
+        <age><![CDATA[7个月]]></age>
+        <sex><![CDATA[女]]></sex>
+    </student>
+</Students>
