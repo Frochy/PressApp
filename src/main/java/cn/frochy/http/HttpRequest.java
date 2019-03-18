@@ -1,20 +1,23 @@
 package cn.frochy.http;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-
 
 
 public final class HttpRequest {
 
     // ;charset=utf-8 必须要，不然会出现乱码
+
+    private final static Logger logger = LoggerFactory.getLogger(HttpTest.class);
 
 
     public static String CONTENT_TYPE_FORM_URLENCODED = "application/x-www-form-urlencoded;charset=utf-8";
@@ -22,20 +25,24 @@ public final class HttpRequest {
 
     public static String CONTENT_TYPE_FORM_DATA = "multipart/form-data;charset=utf-8";
 
-    /** text/plain;charset=utf-8 */
+    /**
+     * text/plain;charset=utf-8
+     */
     public static String CONTENT_TYPE_PLAIN = "text/plain;charset=utf-8";
-    /** application/json;charset=utf-8 */
+    /**
+     * application/json;charset=utf-8
+     */
     public static String CONTENT_TYPE_JSON = "application/json;charset=utf-8";
 
 
     public static String post(String URL, Map<String, String> params) {
-        StringBuilder parm = new StringBuilder();
+        StringBuilder param = new StringBuilder();
         if (params != null && !params.isEmpty()) {
             for (Entry<String, String> entry : params.entrySet()) {
-                parm.append(entry.getKey()).append("=").append(entry.getValue()).append("&");
+                param.append(entry.getKey()).append("=").append(entry.getValue()).append("&");
             }
         }
-        return post(URL, parm.toString());
+        return post(URL, param.toString());
     }
 
 
@@ -129,23 +136,25 @@ public final class HttpRequest {
         return null;
     }
 
-    /** 输出连接信息 */
-    private static void outConnInfo(HttpURLConnection conn, URL url) throws IOException {
+    /**
+     * 输出连接信息
+     */
+    private static synchronized void outConnInfo(HttpURLConnection conn, URL url) throws IOException {
         // url与url = conn.getURL()是等价的
-        System.out.println("conn.getResponseCode():" + conn.getResponseCode());
-        System.out.println("conn.getURL():" + conn.getURL());
-        System.out.println("conn.getRequestMethod():" + conn.getRequestMethod());
-        System.out.println("conn.getContentType():" + conn.getContentType());
-        System.out.println("conn.getReadTimeout():" + conn.getReadTimeout());
-        System.out.println("conn.getResponseMessage():" + conn.getResponseMessage());
-        System.out.println("url.getDefaultPort():" + url.getDefaultPort());
-        System.out.println("url.getFile():" + url.getFile());
-        System.out.println("url.getHost():" + url.getHost());
-        System.out.println("url.getPath():" + url.getPath());
-        System.out.println("url.getPort():" + url.getPort());
-        System.out.println("url.getProtocol():" + url.getProtocol());
-        System.out.println("url.getQuery():" + url.getQuery());
-        System.out.println("url.getRef():" + url.getRef());
-        System.out.println("url.getUserInfo():" + url.getUserInfo());
+        logger.info("conn.getResponseCode():" + conn.getResponseCode());
+        logger.info("conn.getURL():" + conn.getURL());
+        logger.info("conn.getRequestMethod():" + conn.getRequestMethod());
+        logger.info("conn.getContentType():" + conn.getContentType());
+        logger.info("conn.getReadTimeout():" + conn.getReadTimeout());
+        logger.info("conn.getResponseMessage():" + conn.getResponseMessage());
+        logger.info("url.getDefaultPort():" + url.getDefaultPort());
+        logger.info("url.getFile():" + url.getFile());
+        logger.info("url.getHost():" + url.getHost());
+        logger.info("url.getPath():" + url.getPath());
+        logger.info("url.getPort():" + url.getPort());
+        logger.info("url.getProtocol():" + url.getProtocol());
+        logger.info("url.getQuery():" + url.getQuery());
+        logger.info("url.getRef():" + url.getRef());
+        logger.info("url.getUserInfo():" + url.getUserInfo());
     }
 }
