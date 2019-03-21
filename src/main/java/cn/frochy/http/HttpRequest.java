@@ -120,7 +120,7 @@ public final class HttpRequest {
             return sb.toString();
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         } finally {
             try {
                 if (dataIn != null) {
@@ -130,7 +130,7 @@ public final class HttpRequest {
                     conn.disconnect();
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.error(e.getMessage());
             }
         }
         return null;
@@ -144,17 +144,17 @@ public final class HttpRequest {
         logger.info("conn.getResponseCode():" + conn.getResponseCode());
         logger.info("conn.getURL():" + conn.getURL());
         logger.info("conn.getRequestMethod():" + conn.getRequestMethod());
-        logger.info("conn.getContentType():" + conn.getContentType());
+//        logger.info("conn.getContentType():" + conn.getContentType());
         logger.info("conn.getReadTimeout():" + conn.getReadTimeout());
-        logger.info("conn.getResponseMessage():" + conn.getResponseMessage());
+//        logger.info("conn.getResponseMessage():" + conn.getResponseMessage());
         logger.info("url.getDefaultPort():" + url.getDefaultPort());
         logger.info("url.getFile():" + url.getFile());
         logger.info("url.getHost():" + url.getHost());
         logger.info("url.getPath():" + url.getPath());
         logger.info("url.getPort():" + url.getPort());
-        logger.info("url.getProtocol():" + url.getProtocol());
-        logger.info("url.getQuery():" + url.getQuery());
-        logger.info("url.getRef():" + url.getRef());
+//        logger.info("url.getProtocol():" + url.getProtocol());
+//        logger.info("url.getQuery():" + url.getQuery());
+//        logger.info("url.getRef():" + url.getRef());
         logger.info("url.getUserInfo():" + url.getUserInfo());
     }
 }
